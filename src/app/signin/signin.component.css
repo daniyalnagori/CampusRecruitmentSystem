@@ -1,0 +1,17 @@
+.alert-danger{
+  background-color: white;
+  border: none;
+}
+.flex-container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10vh;
+}
+.row {
+    width: auto;
+}

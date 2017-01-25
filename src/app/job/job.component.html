@@ -1,0 +1,40 @@
+<!--<button (click)="getData()">submit</button>-->
+<!--<ul><li *ngFor="let name of names">{{name.name}}</li></ul>-->
+<!--<ul *ngIf="a"><li  *ngFor="let name of names">{{name.name}}</li></ul>-->
+
+<!--<ul><li *ngFor="let name of names">{{name | async}}</li></ul>-->
+<!--<p>{{names  }}</p>-->
+<!--<form [formGroup]="myForms" (ngSubmit)="onSubmit(myForms.value)">
+  <label>Job Title <input class="form-control" type="text" placeholder="John" [formControl]="myForms.controls['title']">
+  </label><br>
+  <label> Job Description<input type="text" [formControl]="myForms.controls['description']">
+  </label><br>
+  <label> What skills are required for this job?<input type="text" [formControl]="myForms.controls['skills']">
+  </label><br>
+  <label> Job Location<input type="text" [formControl]="myForms.controls['location']">
+  </label><br>
+  <button type="submit">submit</button>
+</form>-->
+<!--<ul><li style="border: 1px solid black" *ngFor="let item of items | async; let i = index">{{item.title}} {{item.description}} {{item.skills}} {{item.location}}<button (click)="onDelete(item.$key)">delete</button>
+<button>Apply Now</button></li></ul>
+<button md-button (click)="openDialog()">Open dialog</button>
+ <button type="button" (click)="openDialog()">Open dialog</button>-->
+
+<form [formGroup]="myForms" (ngSubmit)="onSubmit(myForms.value)">
+  <label>First Name <input class="form-control" type="text" placeholder="John" [formControl]="myForms.controls['firstName']">
+  </label><br>
+  <label>Last Name <input type="text" [formControl]="myForms.controls['lastName']">
+  </label><br>
+  <label>Type <select [formControl]="myForms.controls['type']">
+  <option value="student">Student</option>
+  <option value="company">Company</option>
+</select></label>
+  <br>
+  <label>Email <input type="text" [formControl]="myForms.controls['email']">
+  </label><br>
+  <label>Password<input type="text" [formControl]="myForms.controls['password']">
+  </label><br>
+  <label>Location<input type="text" [formControl]="myForms.controls['location']">
+  </label><br>
+  <button type="submit">Signup</button>
+</form>
