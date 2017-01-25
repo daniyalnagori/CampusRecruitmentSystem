@@ -92,17 +92,6 @@
 <tr>
   <td>
     <md-input-container style="width: 100%">
-<input md-input placeholder="Last name" type="lastName" [formControl]="companyForm.controls['clastName']">
-
-</md-input-container>
-</td>
-</tr>
-<small *ngIf="companyForm.controls['clastName'].hasError('required') && companyForm.controls['clastName'].touched" class="alert alert-danger">Required</small>
-<br>
-
-<tr>
-  <td>
-    <md-input-container style="width: 100%">
 <input md-input placeholder="Company password" type="password" [formControl]="companyForm.controls['cpassword']">
 </md-input-container>
 </td>

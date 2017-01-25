@@ -10,7 +10,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private router: Router, private af : AngularFire) { }
 logout(){
-// this.af.auth.logout();
+this.af.auth.logout();
 console.log("aaaaaaaa");
  this.router.navigate(['/signin']);
 }

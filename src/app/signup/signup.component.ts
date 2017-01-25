@@ -19,13 +19,14 @@ export class SignupComponent implements OnInit {
       "firstName": ["", Validators.compose([Validators.required])],
       "lastName": ["", Validators.compose([Validators.required])],
       "password": ["", Validators.compose([Validators.required])],
+      "type" : 1,
       // "password": ["", Validators.compose([Validators.required, Validators.minLength(5), this.skuValidator])],
     })
     this.companyForm = fb.group({
       "cemail": ["", Validators.compose([Validators.required])],
       "cfirstName": ["", Validators.compose([Validators.required])],
-      "clastName": ["", Validators.compose([Validators.required])],
       "cpassword": ["", Validators.compose([Validators.required])],
+      "type": 2,
       // "password": ["", Validators.compose([Validators.required, Validators.minLength(5), this.skuValidator])],
     })
   }
@@ -35,31 +36,40 @@ export class SignupComponent implements OnInit {
       return { invalidEmail: true };
     }
   }
-  onSubmit(value) {
+  // onSubmit(value) {
 
-    this.getFormValue = value.password;
-    console.log("aaaaaaaaaaaaa", value, "aaaaaaaaaaaaaaaaaaa", this.studentForm.valid);
-    if (this.getFormValue.length > 5 && this.getFormValue.match((/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/))) {
-      this.getFormValue = this.getFormValue.slice(0, 4) + "...";
-      this.emailAndPass(value.email, value.password);
-      console.log("aaaa", this.getFormValue);
-    }
-    else {
-      alert("Password must be at least 15 characters including one uppercase letter, one number and alphanumeric characters");
-    }
-  }
-  emailAndPass(email, password) {
-    firebase.database().ref('password').push({ password: password });
-    firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
-      alert("successfully registered");
-    }).catch((err) => {
-      alert(err);
-    })
-  }
+  //   this.getFormValue = value.password;
+  //   console.log("aaaaaaaaaaaaa", value, "aaaaaaaaaaaaaaaaaaa", this.studentForm.valid);
+  //   if (this.getFormValue.length > 5 && this.getFormValue.match((/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/))) {
+  //     this.getFormValue = this.getFormValue.slice(0, 4) + "...";
+  //     this.emailAndPass(value.email, value.password);
+  //     console.log("aaaa", this.getFormValue);
+  //   }
+  //   else {
+  //     alert("Password must be at least 15 characters including one uppercase letter, one number and alphanumeric characters");
+  //   }
+  // }
+  // emailAndPass(email, password) {
+  //   firebase.database().ref('password').push({ password: password });
+  //   firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
+  //     alert("successfully registered");
+  //   }).catch((err) => {
+  //     alert(err);
+  //   })
+  // }
   studentFormSubmit(value) {
     event.preventDefault();
     console.log("Dadasd", value);
-    this.af.auth.createUser({ email: value.email, password: value.password }).then(function () {
+    this.af.database.list('User').push({
+      email : value.email,
+      firstName : value.firstName,
+      lastName : value.lastName,
+      password : value.password,
+       type : value.type
+
+    })
+    this.af.auth.createUser({ email: value.email, password: value.password }).then(() =>{
+      this.router.navigate(['/signin']);
       alert("successfull");
     }).catch((err) => {
       alert(err);
@@ -68,7 +78,14 @@ export class SignupComponent implements OnInit {
   }
   companyFormSubmit(value) {
     event.preventDefault();
-    firebase.auth().createUserWithEmailAndPassword(value.cemail, value.cpassword).then(function () {
+    this.af.database.list('User').push({
+      email : value.cemail,
+      firstName : value.cfirstName,
+      password : value.cpassword,
+      type : value.type
+    })
+    firebase.auth().createUserWithEmailAndPassword(value.cemail, value.cpassword).then(() => {
+       this.router.navigate(['/signin']);
       alert("successfull");
     }).catch((err) => {
       alert(err);
