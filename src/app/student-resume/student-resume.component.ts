@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 export class StudentResumeComponent implements OnInit {
 
   studentResume: FormGroup;
-resume: boolean ;
+  resume: boolean;
   student = true;
   uid: string;
   company = false;
@@ -41,7 +41,7 @@ resume: boolean ;
       fatherName: value.fatherName,
       cnic: value.cnic,
       qualification: value.qualification,
-      cgppa : value.cgpa,
+      cgppa: value.cgpa,
       gender: value.gender,
       status: value.status,
       type: value.type
@@ -50,8 +50,8 @@ resume: boolean ;
   }
   ngOnInit() {
   }
-closeResume(){
-  this.resume = false;
-}
+  closeResume() {
+    this.resume = false;
+  }
 
 }

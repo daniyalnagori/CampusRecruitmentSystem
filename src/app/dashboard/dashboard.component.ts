@@ -23,6 +23,9 @@ export class DashboardComponent implements OnInit {
     this.af.auth.logout();
     this.router.navigate(['/signin']);
   }
+  interview(){
+    alert("Selected for the interview");
+  }
   openResume() {
     this.resume = true;
   }
@@ -55,6 +58,7 @@ export class DashboardComponent implements OnInit {
     })
   }
    appliedForJob(i) {
+     alert("You will receive an email")
     this.appService.getStudentDataa().subscribe(x => {
       console.log(x);
       for(var i=0; i < x.length; i++){

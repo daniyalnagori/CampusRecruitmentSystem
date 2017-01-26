@@ -1,14 +1,16 @@
 <app-dashboard-nav></app-dashboard-nav>
-<!--<div *ngIf="studentType">-->
+
 <md-card class="md-card" *ngFor="let sL of studentList">
-    {{sL.firstName}} {{sL.lastName}} {{sL.gender}} {{sL.fatherName}}
-
+    <h1>Student Resume</h1>
+  FirstName : {{sL.firstName}}<br> lastName : {{sL.lastName}} <br> FatherName:  {{sL.fatherName}} <br> Qualification : {{sL.qaualification}}
+  <br> CFPA : {{sL.cgppa}} <br> Gender : {{sL.gender}}
+<button (click)="interview()">Apply</button>
 </md-card>
-<!--</div>-->
-<!--<div *ngIf="comapnyType">-->
+
+
 <md-card class="md-card" *ngFor="let cL of companyList; let i = index">
-    {{cL.jobTitle}}<br> {{cL.jobDescription}}<br> {{cL.skills}}<br> <button (click)="appliedForJob(cL['$key'])">Apply now</button>
-
+    <h1>Job Ads</h1>
+    {{cL.jobTitle}}<br> {{cL.jobDescription}}<br> {{cL.skills}}<br>
+ Jobtitle : {{cL.jobTitle}}<br> Skills : {{cL.skills}} <br> <button (click)="appliedForJob(cL['$key'])">Apply now</button>
 </md-card>
-
 <!--</div>-->

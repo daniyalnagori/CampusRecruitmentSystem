@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {AngularFire} from "angularfire2";
+import { Router } from "@angular/router";
+import { AngularFire } from "angularfire2";
 
 @Component({
   selector: 'app-dashboard-nav',
@@ -9,16 +9,16 @@ import {AngularFire} from "angularfire2";
 })
 export class DashboardNavComponent implements OnInit {
 
-resume : boolean = false;
-studentList :Array<string>;
+  resume: boolean = false;
+  studentList: Array<string>;
 
-jobPost : boolean = false;
-  constructor(private router: Router, private af : AngularFire) { 
+  jobPost: boolean = false;
+  constructor(private router: Router, private af: AngularFire) {
   }
-logout(){
-this.af.auth.logout();
- this.router.navigate(['/signin']);
-}
+  logout() {
+    this.af.auth.logout();
+    this.router.navigate(['/signin']);
+  }
   ngOnInit() {
   }
 

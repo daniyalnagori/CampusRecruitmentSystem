@@ -30,9 +30,9 @@ export class JobComponent implements OnInit {
   }
   onSubmit(value) {
     let a = this.af.database.list('Job');
-    a.push({ firstName: value.firstName, lastName: value.lastName,type : value.type, email: value.email, password: value.password, location: value.location });
+    a.push({ firstName: value.firstName, lastName: value.lastName, type: value.type, email: value.email, password: value.password, location: value.location });
     console.log("aaaaaaaaaaaaaaaa", value);
-    firebase.auth().createUserWithEmailAndPassword(value.email,value.password).then((x) => {
+    firebase.auth().createUserWithEmailAndPassword(value.email, value.password).then((x) => {
       alert("successful");
     }).catch((err) => {
       alert(err);
