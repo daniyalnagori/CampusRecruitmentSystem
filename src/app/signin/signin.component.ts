@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 })
 export class SigninComponent implements OnInit {
 myForms : FormGroup;
+a;
   constructor(private router:Router, fb : FormBuilder,private af: AngularFire) { 
     this.myForms = fb.group({
       "email" : ["", Validators.compose([Validators.required])],
@@ -36,6 +37,12 @@ onSubmit(value){
       { email: email, password: password },
       { provider: AuthProviders.Password, method: AuthMethods.Password }
     ).then((res) => {
+      console.log("bbbbb", res.uid);
+    this.af.database.object('/User/'+ res.uid).subscribe(x => {
+      console.log(this.a = x);
+      console.log("aaaaaaaaaaaaa",this.a.type);
+    });
+console.log("aaaaaaaaaaaaaaaavvvv",this.a);
       // alert("Sign in successful");
       this.router.navigate(['/dashboard']);
     }, (err) => {

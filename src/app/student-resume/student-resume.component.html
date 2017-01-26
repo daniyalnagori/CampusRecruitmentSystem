@@ -1,0 +1,153 @@
+<div class="flex-container">
+  <md-card class="row" style="width: 23%">
+
+<form [formGroup]="studentResume" (ngSubmit)="studentResumeSubmit(studentResume.value)" *ngIf="student">
+
+  <table style="width: 100%" cellspacing="0">
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input placeholder="First name" type="firstName" [formControl]="studentResume.controls['firstName']">
+
+</md-input-container>
+</td>
+</tr>
+<small *ngIf="studentResume.controls['firstName'].hasError('required') && studentResume.controls['firstName'].touched" class="alert alert-danger">Required</small>
+<br>
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input placeholder="Last name" type="lastName" [formControl]="studentResume.controls['lastName']">
+
+</md-input-container>
+</td>
+</tr>
+<small *ngIf="studentResume.controls['lastName'].hasError('required') && studentResume.controls['lastName'].touched" class="alert alert-danger">Required</small>
+<br>
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input placeholder="Father name" type="fatherName" [formControl]="studentResume.controls['fatherName']">
+
+</md-input-container>
+</td>
+</tr>
+<small *ngIf="studentResume.controls['fatherName'].hasError('required') && studentResume.controls['fatherName'].touched"
+  class="alert alert-danger">Required</small>
+<br>
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input placeholder="CNIC" type="cnic" [formControl]="studentResume.controls['cnic']">
+</md-input-container>
+</td>
+</tr>
+<div>
+  <small *ngIf="studentResume.controls['cnic'].hasError('required') && studentResume.controls['cnic'].touched" class="alert alert-danger">Required</small>
+</div>
+<tr>
+  <td>
+    <select formControlName="gender">
+  <option value="male">Male</option>
+  <option value="female">Female</option>
+</select>
+  </td>
+</tr>
+<tr>
+  <td>
+    <select formControlName="status">
+  <option value="single">Single</option>
+  <option value="married">Married</option>
+</select>
+  </td>
+</tr>
+</table>
+<md-card-actions style="text-align: center">
+<button md-button type="submit">submit</button>
+</md-card-actions>
+</form>
+</md-card>
+</div>
+
+
+
+
+
+
+
+<md-card>
+  <form [formGroup]="studentResume" (ngSubmit)="studentResumeSubmit(studentResume.value)">
+    <h1 class="md-toolbar" color="primary">Student Resume</h1>
+    <table style="width: 100%" cellspacing="0">
+
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input placeholder="First name" name="firstName" style="width: 100%" type="firstName" [formControl]="studentResume.controls['firstName']" required>
+</md-input-container>
+<br>
+<small *ngIf="studentResume.controls['firstName'].hasError('required') && studentResume.controls['firstName'].touched" class="alert alert-danger">
+                    	First Name is required.
+                    </small><br>
+</td>
+<td>
+  <md-input-container style="width: 100%">
+<input md-input placeholder="Last Name" name="lastName" style="width: 100%" [formControl]="studentResume.controls['lastName']" required>
+</md-input-container>
+<br>
+<small *ngIf="studentResume.controls['lastName'].hasError('required') && studentResume.controls['lastName'].touched" class="alert alert-danger">
+                    	Last Name is required.
+                    </small><br>
+</td>
+</tr>
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input style="width: 100%" placeholder="Father name" type="fatherName" [formControl]="studentResume.controls['fatherName']" required>
+</md-input-container>
+<br>
+<small *ngIf="studentResume.controls['fatherName'].hasError('required') && studentResume.controls['fatherName'].touched"
+  class="alert alert-danger">Required</small><br>
+</td>
+</tr>
+
+<tr>
+  <td>
+    <md-input-container style="width: 200%">
+<input md-input placeholder="CNIC" type="cnic" [formControl]="studentResume.controls['cnic']">
+</md-input-container>
+<br>
+  <small *ngIf="studentResume.controls['cnic'].hasError('required') && studentResume.controls['cnic'].touched" class="alert alert-danger">Required</small>
+<br>
+</td>
+</tr>
+
+<tr>
+  <td>
+   <select formControlName="status">
+  <option value="single">Single</option>
+  <option value="married">Married</option>
+</select>
+</td>
+</tr>
+
+<!--<tr>
+  <td>
+    <md-input placeholder="Mobile Number" style="width: 100%" [(ngModel)]="model.contactNumber" name="contactNumber" #contactNumber="ngModel"></md-input>
+</td>
+<td>
+  <md-input placeholder="Profession" style="width: 100%" [(ngModel)]="model.profession" name="profession" #profession="ngModel"></md-input>
+</td>
+</tr>-->
+
+<!--<tr>
+                <td>
+                    <md-input placeholder="About Yourself" style="width: 200%" name="desc" [(ngModel)]="model.desc" #desc="ngModel"></md-input>
+                </td>
+            </tr>-->
+</table>
+<md-card-actions style="text-align: center">
+<button md-button type="submit" (click)="closeResume()">submit</button>
+</md-card-actions>
+</form>
+</md-card>

@@ -11,22 +11,29 @@ export class SignupComponent implements OnInit {
   studentForm: FormGroup;
   companyForm: FormGroup;
   getFormValue;
+  uid: string;
   student = true;
   company = false;
   constructor(fb: FormBuilder, private af: AngularFire, private router: Router) {
+    this.af.auth.take(1).subscribe((auth) => {
+      if (auth !== null) {
+        this.uid = auth.uid;
+        console.log("aaaaaaaaaaa", this.uid);
+      }
+    })
     this.studentForm = fb.group({
       "email": ["", Validators.compose([Validators.required])],
       "firstName": ["", Validators.compose([Validators.required])],
       "lastName": ["", Validators.compose([Validators.required])],
       "password": ["", Validators.compose([Validators.required])],
-      "type" : 1,
+      "type": 1,
       // "password": ["", Validators.compose([Validators.required, Validators.minLength(5), this.skuValidator])],
     })
     this.companyForm = fb.group({
       "cemail": ["", Validators.compose([Validators.required])],
       "cfirstName": ["", Validators.compose([Validators.required])],
       "cpassword": ["", Validators.compose([Validators.required])],
-      "type": 2,
+      "ctype": 2,
       // "password": ["", Validators.compose([Validators.required, Validators.minLength(5), this.skuValidator])],
     })
   }
@@ -58,38 +65,39 @@ export class SignupComponent implements OnInit {
   //   })
   // }
   studentFormSubmit(value) {
-    event.preventDefault();
+    // event.preventDefault();
     console.log("Dadasd", value);
-    this.af.database.list('User').push({
-      email : value.email,
-      firstName : value.firstName,
-      lastName : value.lastName,
-      password : value.password,
-       type : value.type
+    this.af.auth.createUser({ email: value.email, password: value.password }).then((auth) => {
+      this.af.database.object('User/' + auth.uid).set({
+        email: value.email,
+        firstName: value.firstName,
+        lastName: value.lastName,
+        password: value.password,
+        type: value.type
 
-    })
-    this.af.auth.createUser({ email: value.email, password: value.password }).then(() =>{
+      })
       this.router.navigate(['/signin']);
       alert("successfull");
     }).catch((err) => {
       alert(err);
     })
-
   }
   companyFormSubmit(value) {
-    event.preventDefault();
-    this.af.database.list('User').push({
-      email : value.cemail,
-      firstName : value.cfirstName,
-      password : value.cpassword,
-      type : value.type
-    })
-    firebase.auth().createUserWithEmailAndPassword(value.cemail, value.cpassword).then(() => {
-       this.router.navigate(['/signin']);
-      alert("successfull");
-    }).catch((err) => {
-      alert(err);
-    })
+    // event.preventDefault();
+    this.af.auth.createUser({ email: value.cemail, password: value.cpassword })
+      .then((auth) => {
+        this.af.database.object('User/' + auth.uid).set({
+          email: value.cemail,
+          firstName: value.cfirstName,
+          password: value.cpassword,
+          type: value.ctype
+
+        })
+        this.router.navigate(['/signin']);
+        alert("successfull");
+      }).catch((err) => {
+        alert(err);
+      })
   }
   onChange(value) {
     // this.company = true;

@@ -1,2 +1,7 @@
 <button (click)="logout()">logout</button>
 <p>daniyal</p>
+<button (click)="openResume();">Student resume</button>
+<button (click)="closeResume();">close resume</button>
+<div *ngIf="resume">
+<app-student-resume></app-student-resume>
+</div>

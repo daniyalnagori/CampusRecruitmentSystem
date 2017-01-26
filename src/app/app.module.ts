@@ -14,6 +14,7 @@ import { SignupComponent } from './signup/signup.component';
 import {Router,Routes,RouterModule} from "@angular/router";
 import {AuthGuardService} from "./authGuard.service";
 import { HomeComponent } from './home/home.component';
+import { StudentResumeComponent } from './student-resume/student-resume.component';
 const myFirebaseAuthConfig ={
     provider: AuthProviders.Google,
   method: AuthMethods.Redirect
@@ -42,7 +43,8 @@ const firebaseConfig = {
     DashboardComponent,
     SigninComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    StudentResumeComponent
   ],
   imports: [
     BrowserModule,
