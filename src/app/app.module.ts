@@ -15,6 +15,9 @@ import {Router,Routes,RouterModule} from "@angular/router";
 import {AuthGuardService} from "./authGuard.service";
 import { HomeComponent } from './home/home.component';
 import { StudentResumeComponent } from './student-resume/student-resume.component';
+import { CompanyFormComponent } from './company-form/company-form.component';
+import { DashboardNavComponent } from './dashboard-nav/dashboard-nav.component';
+import { DataListComponent } from './data-list/data-list.component';
 const myFirebaseAuthConfig ={
     provider: AuthProviders.Google,
   method: AuthMethods.Redirect
@@ -26,6 +29,8 @@ const routes = [
   {path: 'nav', component: NavComponent},
   {path: 'signin', component:SigninComponent},
   {path: 'signup', component:SignupComponent},
+  {path: 'studentresume', component:StudentResumeComponent},
+   {path: 'companyform', component:CompanyFormComponent},
 ]
 const firebaseConfig = {
   apiKey: "AIzaSyA1XYdpjxAHVuPoHdt7diqYmWgZMLDup2g",
@@ -44,7 +49,10 @@ const firebaseConfig = {
     SigninComponent,
     SignupComponent,
     HomeComponent,
-    StudentResumeComponent
+    StudentResumeComponent,
+    CompanyFormComponent,
+    DashboardNavComponent,
+    DataListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,14 @@
-<button (click)="logout()">logout</button>
-<p>daniyal</p>
-<button (click)="openResume();">Student resume</button>
-<button (click)="closeResume();">close resume</button>
-<div *ngIf="resume">
-<app-student-resume></app-student-resume>
-</div>
+<app-dashboard-nav></app-dashboard-nav>
+<!--<div *ngIf="studentType">-->
+<md-card class="md-card" *ngFor="let sL of studentList">
+    {{sL.firstName}} {{sL.lastName}} {{sL.gender}} {{sL.fatherName}}
+
+</md-card>
+<!--</div>-->
+<!--<div *ngIf="comapnyType">-->
+<md-card class="md-card" *ngFor="let cL of companyList; let i = index">
+    {{cL.jobTitle}}<br> {{cL.jobDescription}}<br> {{cL.skills}}<br> <button (click)="appliedForJob(cL['$key'])">Apply now</button>
+
+</md-card>
+
+<!--</div>-->

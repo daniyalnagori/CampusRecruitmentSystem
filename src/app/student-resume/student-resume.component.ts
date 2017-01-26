@@ -18,7 +18,6 @@ resume: boolean ;
     this.af.auth.take(1).subscribe((auth) => {
       if (auth !== null) {
         this.uid = auth.uid;
-        console.log(this.uid);
       }
     })
 
@@ -27,40 +26,28 @@ resume: boolean ;
       "lastName": ["", Validators.compose([Validators.required])],
       "fatherName": ["", Validators.compose([Validators.required])],
       "cnic": ["", Validators.compose([Validators.required])],
+      "qualification": ["", Validators.compose([Validators.required])],
+      "cgpa": ["", Validators.compose([Validators.required])],
       "gender": [""],
       "status": [""],
       "type": 1,
-      // "password": ["", Validators.compose([Validators.required, Validators.minLength(5), this.skuValidator])],
     })
   }
 
   studentResumeSubmit(value) {
-    // event.preventDefault();
-    console.log("Dadasd", value);
     this.af.database.object('student/' + this.uid).set({
       firstName: value.firstName,
       lastName: value.lastName,
       fatherName: value.fatherName,
       cnic: value.cnic,
+      qualification: value.qualification,
+      cgppa : value.cgpa,
       gender: value.gender,
       status: value.status,
       type: value.type
     })
 
   }
-
-  // onChange(value) {
-  //   // this.company = true;
-  //   console.log("dasdasdas", value);
-  //   if (value === 'student') {
-  //     this.student = true;
-  //     this.company = false;
-  //   }
-  //   else if (value === "company") {
-  //     this.company = true;
-  //     this.student = false;
-  //   }
-  // }
   ngOnInit() {
   }
 closeResume(){

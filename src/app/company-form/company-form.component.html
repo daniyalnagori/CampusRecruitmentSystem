@@ -1,0 +1,85 @@
+<app-dashboard></app-dashboard>
+<div class="flex-container">
+  <md-card class="row">
+    <form [formGroup]="companyForm" (ngSubmit)="companyFormSubmit(companyForm.value)">
+       <h1 class="md-toolbar" color="primary">Post A Job</h1>
+      <table style="width: 100%" cellspacing="0">
+<tr>
+  <td>
+    <md-input-container style="width: 200%">
+<input md-input placeholder="Job title" [formControl]="companyForm.controls['jobTitle']">
+</md-input-container>
+<br>
+<small *ngIf="companyForm.controls['jobTitle'].hasError('required') && companyForm.controls['jobTitle'].touched" class="alert alert-danger">
+                    	First Name is required.
+                    </small><br>
+</td>
+<td>
+  </tr>
+  <tr>
+    <td>
+      <md-input-container style="width: 200%">
+<input md-input placeholder="Job description" [formControl]="companyForm.controls['jobDescription']">
+</md-input-container>
+<br>
+<small *ngIf="companyForm.controls['jobDescription'].hasError('required') && companyForm.controls['jobDescription'].touched"
+  class="alert alert-danger">
+                    	First Name is required.
+                    </small><br>
+</td>
+</tr>
+<tr>
+  <td>
+    <md-input-container style="width: 200%">
+<input md-input placeholder="What skills are required for this job?" [formControl]="companyForm.controls['skills']">
+</md-input-container>
+<br>
+<small *ngIf="companyForm.controls['skills'].hasError('required') && companyForm.controls['skills'].touched" class="alert alert-danger">
+                    	First Name is required.
+                    </small><br>
+</td>
+</tr>
+<tr>
+  <td>
+    <md-input-container style="width: 200%">
+<input md-input placeholder="Job location" [formControl]="companyForm.controls['location']">
+</md-input-container>
+<br>
+<small *ngIf="companyForm.controls['location'].hasError('required') && companyForm.controls['location'].touched" class="alert alert-danger">
+                    	First Name is required.
+                    </small><br>
+</td>
+</tr>
+
+
+<tr>
+  <td>
+    <md-input-container width="200%">
+      <textarea md-input placeholder="Address" value="1600 Amphitheatre Pkway" [formControl]="companyForm.controls['address']"></textarea>
+    </md-input-container>
+    <br>
+    <small *ngIf="companyForm.controls['address'].hasError('required') && companyForm.controls['address'].touched" class="alert alert-danger">
+                    	First Name is required.
+                    </small><br>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <md-input-container width="100%">
+      <input md-input placeholder="City">
+    </md-input-container>
+  </td>
+  <td>
+    <md-input-container width="100%">
+      <input md-input placeholder="State">
+    </md-input-container>
+  </td>
+</tr>
+</table>
+<md-card-actions style="text-align: center">
+<button md-button type="submit">submit</button>
+</md-card-actions>
+</form>
+</md-card>
+</div>

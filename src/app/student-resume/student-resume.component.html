@@ -1,4 +1,5 @@
-<div class="flex-container">
+<app-dashboard></app-dashboard>
+<!--<div class="flex-container">
   <md-card class="row" style="width: 23%">
 
 <form [formGroup]="studentResume" (ngSubmit)="studentResumeSubmit(studentResume.value)" *ngIf="student">
@@ -67,18 +68,12 @@
 </md-card-actions>
 </form>
 </md-card>
-</div>
-
-
-
-
-
-
-
-<md-card>
-  <form [formGroup]="studentResume" (ngSubmit)="studentResumeSubmit(studentResume.value)">
-    <h1 class="md-toolbar" color="primary">Student Resume</h1>
-    <table style="width: 100%" cellspacing="0">
+</div>-->
+<div class="flex-container">
+  <md-card class="row">
+    <form [formGroup]="studentResume" (ngSubmit)="studentResumeSubmit(studentResume.value)">
+      <h1 class="md-toolbar" color="primary">Student Resume</h1>
+      <table style="width: 100%" cellspacing="0">
 
 <tr>
   <td>
@@ -117,37 +112,56 @@
 <input md-input placeholder="CNIC" type="cnic" [formControl]="studentResume.controls['cnic']">
 </md-input-container>
 <br>
-  <small *ngIf="studentResume.controls['cnic'].hasError('required') && studentResume.controls['cnic'].touched" class="alert alert-danger">Required</small>
+<small *ngIf="studentResume.controls['cnic'].hasError('required') && studentResume.controls['cnic'].touched" class="alert alert-danger">Required</small>
 <br>
 </td>
 </tr>
-
 <tr>
   <td>
-   <select formControlName="status">
+    <md-input-container style="width: 200%">
+<input md-input placeholder="Qualification" type="cnic" [formControl]="studentResume.controls['qualification']">
+</md-input-container>
+<br>
+<small *ngIf="studentResume.controls['qualification'].hasError('required') && studentResume.controls['qualification'].touched"
+  class="alert alert-danger">Required</small>
+<br>
+</td>
+</tr>
+<tr>
+  <td>
+    <md-input-container style="width: 200%">
+<input md-input placeholder="CGPA" type="cnic" [formControl]="studentResume.controls['cgpa']">
+</md-input-container>
+<br>
+<small *ngIf="studentResume.controls['cgpa'].hasError('required') && studentResume.controls['cgpa'].touched" class="alert alert-danger">Required</small>
+<br>
+</td>
+</tr>
+<tr>
+  <td>
+
+    <select formControlName="gender">
+  <option value="male">Male</option>
+  <option value="female">Female</option>
+</select>
+  </td>
+</tr>
+<tr>
+  <tr>
+    <td>
+
+      <select formControlName="status">
   <option value="single">Single</option>
   <option value="married">Married</option>
 </select>
-</td>
-</tr>
+    </td>
+  </tr>
 
-<!--<tr>
-  <td>
-    <md-input placeholder="Mobile Number" style="width: 100%" [(ngModel)]="model.contactNumber" name="contactNumber" #contactNumber="ngModel"></md-input>
-</td>
-<td>
-  <md-input placeholder="Profession" style="width: 100%" [(ngModel)]="model.profession" name="profession" #profession="ngModel"></md-input>
-</td>
-</tr>-->
 
-<!--<tr>
-                <td>
-                    <md-input placeholder="About Yourself" style="width: 200%" name="desc" [(ngModel)]="model.desc" #desc="ngModel"></md-input>
-                </td>
-            </tr>-->
-</table>
-<md-card-actions style="text-align: center">
-<button md-button type="submit" (click)="closeResume()">submit</button>
+  </table>
+  <md-card-actions style="text-align: center">
+<button md-button type="submit">submit</button>
 </md-card-actions>
 </form>
 </md-card>
+</div>
