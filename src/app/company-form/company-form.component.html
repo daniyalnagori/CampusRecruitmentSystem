@@ -1,0 +1,55 @@
+<app-dashboard-nav></app-dashboard-nav>
+<div class="flex-container">
+  <md-card class="row">
+    <form [formGroup]="jobForm" (ngSubmit)="companyJobForm(jobForm.value)">
+      <h1 class="md-toolbar" color="primary">Company Details</h1>
+      <table style="width: 100%" cellspacing="0">
+
+        <tr>
+          <td>
+            <md-input-container style="width: 100%">
+              <input md-input placeholder="Company name" name="companyName" style="width: 100%" type="companyName" [formControl]="jobForm.controls['companyName']"
+                required>
+            </md-input-container>
+            <br>
+            <small *ngIf="jobForm.controls['companyName'].hasError('required') && jobForm.controls['companyName'].touched" class="alert alert-danger">
+                    	Company Name is required.
+                    </small><br>
+          </td>
+          <td>
+            <md-input-container style="width: 100%">
+              <input md-input placeholder="Website" name="website" style="width: 100%" [formControl]="jobForm.controls['website']" required>
+            </md-input-container>
+            <br>
+            <small *ngIf="jobForm.controls['website'].hasError('required') && jobForm.controls['website'].touched" class="alert alert-danger">
+                    	website is required.
+                    </small><br>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <md-input-container style="width: 100%">
+              <input md-input style="width: 100%" placeholder="Jobtitle" type="jobtitle" [formControl]="jobForm.controls['jobtitle']" required>
+            </md-input-container>
+            <br>
+            <small *ngIf="jobForm.controls['jobtitle'].hasError('required') && jobForm.controls['jobtitle'].touched" class="alert alert-danger">Job title Required</small><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <md-input-container style="width: 200%">
+              <input md-input placeholder="Job description" type="description" [formControl]="jobForm.controls['description']">
+            </md-input-container>
+            <br>
+            <small *ngIf="jobForm.controls['description'].hasError('required') && jobForm.controls['description'].touched" class="alert alert-danger">Description Required</small>
+            <br>
+          </td>
+        </tr>
+      </table>
+      <md-card-actions style="text-align: center">
+        <button md-button type="submit">Post job</button>
+      </md-card-actions>
+    </form>
+  </md-card>
+</div>

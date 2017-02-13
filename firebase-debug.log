@@ -1,0 +1,31 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      C:\Program Files\nodejs\node.exe C:\Users\daniyal nagori\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] CLI Version:  3.2.1
+[debug] Platform:     win32
+[debug] Node Version: v7.3.0
+[debug] Time:         Mon Feb 13 2017 23:16:33 GMT+0500 (Pakistan Standard Time)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/todoapp-5ff11 
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/todoapp-5ff11/tokens 
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'todoapp-5ff11'...
+[info] 
+[info] i  deploying hosting
+[info] +  database: rules ready to deploy.
+[info] i  hosting: preparing dist directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/todoapp-5ff11/uploads/-KcsgEZkUF6fNf0MXat8?fileCount=11&message= 
+[debug] <<< HTTP RESPONSE 200
+[info] +  hosting: dist folder uploaded successfully
+[info] +  hosting: 11 files uploaded successfully
+[info] i  starting release process (may take several minutes)...
+[debug] >>> HTTP REQUEST POST https://deploy.firebase.com/v1/projects/todoapp-5ff11/releases
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] +  Deploy complete!
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/todoapp-5ff11/overview
+[info] Hosting URL: https://todoapp-5ff11.firebaseapp.com

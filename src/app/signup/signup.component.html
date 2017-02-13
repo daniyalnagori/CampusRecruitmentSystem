@@ -1,0 +1,110 @@
+<app-nav></app-nav>
+<div class="flex-container">
+  <md-card class="row" style="width: 23%">
+<md-card-title style="text-align: center">Sign up</md-card-title>
+
+<select (change)="onChange($event.target.value)">
+      <option value="student">Student</option>
+      <option value="company">Company</option>
+    </select>
+<form *ngIf="student" [formGroup]="studentSignUp" (ngSubmit)="studentSignUpSubmit(studentSignUp.value)">
+  <table style="width: 100%" cellspacing="0">
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input placeholder="Email" type="email" [formControl]="studentSignUp.controls['email']">
+
+</md-input-container>
+</td>
+</tr>
+<small *ngIf="studentSignUp.controls['email'].hasError('required') && studentSignUp.controls['email'].touched" class="alert alert-danger">Required</small>
+<br>
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input placeholder="First name" type="firstName" [formControl]="studentSignUp.controls['firstName']">
+
+</md-input-container>
+</td>
+</tr>
+<small *ngIf="studentSignUp.controls['firstName'].hasError('required') && studentSignUp.controls['firstName'].touched" class="alert alert-danger">Required</small>
+<br>
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input placeholder="Last name" type="lastName" [formControl]="studentSignUp.controls['lastName']">
+
+</md-input-container>
+</td>
+</tr>
+<small *ngIf="studentSignUp.controls['lastName'].hasError('required') && studentSignUp.controls['lastName'].touched" class="alert alert-danger">Required</small>
+<br>
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input placeholder="Password" type="password" [formControl]="studentSignUp.controls['password']">
+</md-input-container>
+</td>
+</tr>
+<div>
+  <small *ngIf="studentSignUp.controls['password'].hasError('required') && studentSignUp.controls['password'].touched" class="alert alert-danger">Required</small>
+</div>
+</table>
+<md-card-actions style="text-align: center">
+<button md-button type="submit">Signup</button>
+</md-card-actions>
+</form>
+
+
+
+
+<form *ngIf="company" [formGroup]="companySignup" (ngSubmit)="companySignupFormSubmit(companySignup.value)">
+  <table style="width: 100%" cellspacing="0">
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input placeholder="Email" type="email" [formControl]="companySignup.controls['email']">
+
+</md-input-container>
+</td>
+</tr>
+<small *ngIf="companySignup.controls['email'].hasError('required') && companySignup.controls['email'].touched" class="alert alert-danger">Required</small>
+<br>
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input placeholder="Company Name" type="companyName" [formControl]="companySignup.controls['companyName']">
+
+</md-input-container>
+</td>
+</tr>
+<small *ngIf="companySignup.controls['companyName'].hasError('required') && companySignup.controls['companyName'].touched"
+  class="alert alert-danger">Required</small>
+<br>
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input placeholder="Contact Number" type="number" [formControl]="companySignup.controls['contactNumber']">
+
+</md-input-container>
+</td>
+</tr>
+<small *ngIf="companySignup.controls['contactNumber'].hasError('required') && companySignup.controls['contactNumber'].touched" class="alert alert-danger">Required</small>
+<br>
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input placeholder="Password" type="Password" [formControl]="companySignup.controls['password']">
+</md-input-container>
+</td>
+</tr>
+<div>
+  <small *ngIf="companySignup.controls['password'].hasError('required') && companySignup.controls['password'].touched" class="alert alert-danger">Required</small>
+</div>
+</table>
+<md-card-actions style="text-align: center">
+<button md-button type="submit">Signup</button>
+</md-card-actions>
+</form>
+</md-card>
+</div>

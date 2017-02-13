@@ -1,0 +1,19 @@
+<app-dashboard-nav> </app-dashboard-nav>
+<h1>Student Resumes</h1>
+<md-progress-circle style="margin:0 auto;margin-top: 240px" *ngIf="!(studentDataList | async)" mode="indeterminate" color="primary">
+
+</md-progress-circle>
+<ul>
+  <li *ngFor="let data of (studentDataList | async);let i = index">
+    Student Name: {{data.value.firstName}}
+    <div class="container">
+      <a type="button" class="btn btn-info" data-toggle="collapse" [href]="'#' + i">see more</a>
+      <div [id]="i" class="collapse index">
+        <span class="list-group-item list-group-item-info">Student Name: {{data.value.firstName}}</span>
+        <span class="list-group-item list-group-item-info">Student Name: {{data.value.cnic}}</span>
+        <span class="list-group-item list-group-item-info">Student Name: {{data.value.cgpa}}</span>
+      </div>
+    </div>
+  </li>
+</ul>
+<!--<pre>{{keys((studentDataList | async)) | json}}</pre>-->

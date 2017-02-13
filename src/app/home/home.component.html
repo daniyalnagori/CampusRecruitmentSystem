@@ -1,0 +1,33 @@
+<app-nav></app-nav>
+<div class="flex-container">
+  <md-card class="row" style="width: 23%">
+<md-card-title style="text-align: center">Sign in</md-card-title>
+<form [formGroup]="myForms" (ngSubmit)="onSubmit(myForms.value)">
+
+  <table style="width: 100%" cellspacing="0">
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input placeholder="Email" type="email" [formControl]="myForms.controls['email']">
+</md-input-container>
+</td>
+</tr>
+<small *ngIf="myForms.controls['email'].hasError('required') && myForms.controls['email'].touched" class="alert alert-danger">Email address is Required</small>
+<br>
+<tr>
+  <td>
+    <md-input-container style="width: 100%">
+<input md-input placeholder="Password" type="password" [formControl]="myForms.controls['password']">
+</md-input-container>
+</td>
+</tr>
+<div>
+  <small *ngIf="myForms.controls['password'].hasError('required') && myForms.controls['password'].touched" class="alert alert-danger">Password is required</small>
+</div>
+</table>
+<md-card-actions style="text-align: center">
+<button md-button type="submit">SignIn</button>
+</md-card-actions>
+</form>
+</md-card>
+</div>
