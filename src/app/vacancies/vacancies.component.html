@@ -1,7 +1,7 @@
 <app-dashboard-nav></app-dashboard-nav>
 <h1 style="text-align: center">Jobs</h1>
 <ul>
-  <li *ngFor="let job of jobs | async">
+  <li *ngFor="let job of jobs | async; let i = index">
     <span><b>Comapny name:</b> {{job.value.companyName}}</span>
     <span> <a type="button" class="btn btn-info" data-toggle="collapse" [href]="'#' + i">see more</a></span>
     <div class="container">

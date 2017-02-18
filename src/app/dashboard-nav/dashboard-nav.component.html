@@ -6,8 +6,8 @@
     <ul class="nav navbar-nav" style="float: right">
       <li *ngIf="check === 'Student'" class="active"><a routerLink="/resumeForm">Post Resume</a></li>
       <li><a *ngIf="check1 === 'Company'" routerLink="/postJob">Post A Job</a></li>
-      <li><a routerLink="/studentdata" *ngIf="check === 'Student'">Student resumes</a></li>
-      <li><a routerLink="/companyjobs" *ngIf="check1 === 'Company'">Jobs</a></li>
+      <li><a routerLink="/studentdata" *ngIf="check1 === 'Company'">Student resumes</a></li>
+      <li><a routerLink="/companyjobs" *ngIf="check === 'Student'">Jobs</a></li>
       <li><button class="btn btn-danger navbar-btn" (click)="logout()">Logout</button></li>
     </ul>
   </div>

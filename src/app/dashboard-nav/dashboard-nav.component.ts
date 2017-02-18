@@ -12,6 +12,7 @@ export class DashboardNavComponent implements OnInit {
   uid: any;
   check;
   check1;
+  checking;
   userUid;
   constructor(private router: Router, private af: AngularFire, private appService: AppService) {
     this.CompanyOrStudentUid();
@@ -27,11 +28,29 @@ export class DashboardNavComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.appService.getAuthState().subscribe((x) => { console.log(this.userUid = x.uid) });
     this.appService.getAuthState()
+      // if (this.af.database.list('Users/')
+      //   .map((x) => { x.map((x) => { console.log(this.check1 = x[this.userUid].value.type) }) })
+      //   // .map((y) => { console.log(y[this.userUid]) }))
+      //   .subscribe((x) => {
+
+      //   })) {
+      // }
+      // else {
+      //   // this.check1 = 'Company';
+      // }
+
       .subscribe(auth => auth != null ? this.userUid = auth.uid : console.info("user is Logged Out"));
-    if (this.af.database.list('Users/')) {
-      this.af.database.list('Users/Student/' + this.userUid).subscribe((x) => { this.check = x[0].type });
-      this.af.database.list('Users/Company/' + this.userUid).subscribe((x) => { this.check1 = x[0].type });
-    }
+    // if (this.af.database.list('Users')) {
+    this.af.database.list('Users/Company/' + this.userUid).subscribe((x) => {
+      console.log(x)
+      if (x.length) {
+        this.check1 = x[0].type;
+      } else {
+        this.af.database.list('Users/Student/' + this.userUid).subscribe((x) => { this.check = x[0].type });
+      }
+    });
+    // }
   }
 }
